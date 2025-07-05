@@ -23,6 +23,11 @@ export default function NotificationContainer(props: NotificationContainerProps)
     maxSize: props.maxSize ?? 5,
   })
 
+  const navigate = (url: string) => {
+    window.history.pushState({}, '', url);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   const getTypeColor = (type = "info") => {
     const colors = {
       info: "#3b82f6",
@@ -115,6 +120,9 @@ export default function NotificationContainer(props: NotificationContainerProps)
               onClick={() => {
                 if (!notification.isRead)
                   markRead(notification.id)
+                if (notification.url) {
+                  navigate(notification.url)
+                }
               }}
             >
               <motion.div

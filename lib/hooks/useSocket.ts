@@ -16,6 +16,7 @@ type NotificationPayload = {
   isUpdated: boolean;
   isRead: boolean;
   type: string;
+  url: string;
 };
 
 type InitSdkProps = {
