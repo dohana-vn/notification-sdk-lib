@@ -51,8 +51,16 @@ export const useSocketSdk = ({
 
   const markRead = debounce((id: string) => {
     socketRef.current?.emit('mark-read', {id});
-    setNotis((prev => prev?.map(noti => noti.id === id ? {...noti, isRead: true} : noti)));
-    setUnread(prev => prev > 0 ? prev - 1 : prev)
+    let n: NotificationPayload;
+    setNotis((prev => prev?.map(noti => {
+      if (noti.id === id) {
+        n = noti
+        return {...noti, isRead: true}
+      } else {
+        return noti
+      }
+    })));
+    setUnread(prev => prev > 0 && n && !n.isRead ? prev - 1 : prev)
   }, 800)
 
   const markAllRead = debounce(() => {

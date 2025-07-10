@@ -4,6 +4,8 @@ import {Popover, PopoverContent, PopoverTrigger} from "./popover.tsx";
 import {useSocketSdk} from "../hooks/useSocket.ts";
 import {formatCreatedAt} from "../utils";
 import {AnimatePresence, motion} from 'framer-motion';
+import {useRef} from "react";
+import {useBlinkTitleOnUnread} from "../hooks/useBlinkTitleOnUnread.ts";
 
 interface NotificationContainerProps {
   token: string;
@@ -22,6 +24,8 @@ export default function NotificationContainer(props: NotificationContainerProps)
     url: props.url ?? 'http://localhost:7106',
     maxSize: props.maxSize ?? 5,
   })
+  const originalTitleRef = useRef(document.title);
+  useBlinkTitleOnUnread(unread, originalTitleRef.current);
 
   const navigate = (url: string) => {
     window.history.pushState({}, '', url);
