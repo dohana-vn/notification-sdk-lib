@@ -71,7 +71,7 @@ export default function NotificationContainer(props: NotificationContainerProps)
         >
           <div className={styles.headerContent}>
             <div>
-              <h4 className={styles.title}>Notifications</h4>
+              <h4 className={styles.title}>Thông báo</h4>
               {unread && unread > 0 ? <p className={styles.description}>Bạn có {unread} thông báo chưa đọc.</p> : null}
             </div>
             {unread > 0 && (
@@ -82,7 +82,7 @@ export default function NotificationContainer(props: NotificationContainerProps)
                 whileTap={{scale: 0.95}}
               >
                 <LucideCheck size={14}/>
-                Mark all read
+                Tất cả
               </motion.button>
             )}
           </div>
