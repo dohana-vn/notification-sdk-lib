@@ -112,6 +112,13 @@ export const useSocketSdk = ({
       console.error('❗ Socket connect error:', err.message);
     });
 
+    socket.on('event', (data) => {
+      window.postMessage({
+        type: 'event_dohana',
+        data,
+      })
+    });
+
     return () => {
       socket.disconnect();
     };
