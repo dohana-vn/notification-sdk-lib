@@ -21,7 +21,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
