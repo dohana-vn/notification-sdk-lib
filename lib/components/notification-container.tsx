@@ -47,7 +47,7 @@ export default function NotificationContainer(props: NotificationContainerProps)
       <PopoverTrigger asChild={true}>
         <div className={`${styles.container} ${props.containerClassName ?? ''}`}>
           <div className={styles.icon}>
-            <LucideBellRing className={props.iconClassName ?? ''} size={props.iconSize ?? 18} color={"black"}/>
+            <LucideBellRing className={props.iconClassName ?? ''} size={props.iconSize ?? 18}/>
             <div>
               <AnimatePresence>
                 {unread > 0 && (
